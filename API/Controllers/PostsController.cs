@@ -24,7 +24,6 @@ namespace API.Controllers
         /// </summary>
         ///  <returns> A list of posts </returns>
         [HttpGet(Name = "GetPosts")]
-
         public ActionResult<List<Post>> Get()
         {
             return this.context.Posts.ToList();
@@ -43,7 +42,35 @@ namespace API.Controllers
             {
                 return NotFound();
             }
+            
             return Ok(post);
+        }
+
+        /// <summary>
+        ///POST api/post
+        ///</summary>
+        /// <param name="request">Json request containing post field</param>
+        /// <returns>A new post</returns>
+        [HttpPost(Name = "Create")]
+        public ActionResult<Post>Create([FromBody]Post request)
+        {
+            var post = new Post
+            {
+                Id = request.Id,
+                Title = request.Title,
+                Body = request.Body,
+                Date = request.Date
+            };
+
+            context.Posts.Add(post);
+            var success = context.SaveChanges() > 0;
+
+            if (success)
+            {
+                return Ok(post);
+            }
+
+            throw new Exception("Error creating post");
         }
     }
 }
