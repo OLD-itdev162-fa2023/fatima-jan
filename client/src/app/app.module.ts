@@ -9,10 +9,18 @@ import {MatButtonModule} from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HomeComponent } from './home/home.component';
+import { ViewPostComponent } from './view-post/view-post.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ViewPostComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ],
   providers: [],
